@@ -1,7 +1,7 @@
 <template>
   <div class="swipe">
     <span class="hot-news">今日热闻</span>
-    <mt-swipe :auto="2000">
+    <mt-swipe :auto="4000">
       <mt-swipe-item v-for="topStory in topStories" :key="topStory.id">
         <img :src="'http://read.html5.qq.com/image?src=forum&q=5&r=0&imgflag=7&imageUrl=' + topStory.image" :alt="topStory.id">
         <span class="top-story-title">{{topStory.title}}</span>
@@ -23,7 +23,6 @@
       axios.get('/news/latest')
         .then(response => {
           this.topStories = response.data.top_stories;
-          console.log(this.topStories);
         })
         .catch(error => {
           console.log(error);
