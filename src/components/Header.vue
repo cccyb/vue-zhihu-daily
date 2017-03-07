@@ -1,0 +1,32 @@
+<template>
+  <header>
+    <i class="icon iconfont icon-fenlei"></i>
+    <span class="hot-news">今日热闻</span>
+  </header>
+</template>
+<script>
+export default {
+
+};
+</script>
+<style lang="sass">
+header
+  position: absolute;
+  width: 100%;
+  height: 32px;
+  z-index: 2;
+  font-size: 22px;
+  color: #fff;
+  line-height: 32px;
+  .icon-fenlei
+    height: 100%;
+    font-size: 26px;
+    padding-left: 15px;
+  .hot-news 
+    position: absolute;
+    width: 88px;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    margin-left: -44px;
+</style>
