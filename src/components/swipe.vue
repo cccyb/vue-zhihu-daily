@@ -28,22 +28,8 @@
         });
     }
   };
-
 </script>
 
 <style lang="sass">
-.swipe 
-  height: 220px;
-  color: #fff;
-  font-size: 20px;
-  img 
-    position: absolute;
-    bottom: -75px;
-    width: 100%;
-  .top-story-title
-    position: absolute;
-    z-index: 2;
-    bottom: 0;
-    padding: 30px 20px;
-    line-height: 25px;
+@import "../assets/sass/components/Swipe.sass";
 </style>
