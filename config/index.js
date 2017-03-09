@@ -30,10 +30,17 @@ module.exports = {
     proxyTable: {
       '/news/latest': {
         target: 'http://news-at.zhihu.com/api/4',
-        changeOrigin: true
-        // pathRewrite: {
-        //   '^/news/latest': '/news/latest'
-        // }
+        changeOrigin: true,
+        pathRewrite: {
+          '^/news/latest': '/news/latest'
+        }
+      },
+      '/news': {
+        target: 'http://news-at.zhihu.com/api/4',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/news': '/news'
+        }
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy" with this
