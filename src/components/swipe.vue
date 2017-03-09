@@ -2,8 +2,8 @@
   <div class="swipe">
     <mt-swipe :auto="4000">
       <mt-swipe-item v-for="topStory in topStories" :key="topStory.id" @click.native="viewDetail(topStory.id)" >
-        <img :src="'http://read.html5.qq.com/image?src=forum&q=5&r=0&imgflag=7&imageUrl=' + topStory.image" :alt="topStory.title" :data-id="topStory.id" >
-        <span class="top-story-title" :data-id="topStory.id">{{topStory.title}}</span>
+        <img :src="attachImageUrl(topStory.image)" :alt="topStory.title">
+        <span class="top-story-title">{{topStory.title}}</span>
       </mt-swipe-item>
     </mt-swipe>
   </div>
@@ -29,9 +29,15 @@
         });
     },
     methods: {
+      // 跳转到对应id的文章详情页
       viewDetail: function(id) {
-        // 跳转到对应id的文章详情页
         router.push({ name: 'newsDetail', params: { id: id } });
+      },
+      // 修改图片链接
+      attachImageUrl: function(srcUrl) {
+        if (srcUrl !== undefined) {
+          return srcUrl.replace(/http\w{0,1}:\/\/p/g, 'https://images.weserv.nl/?url=p');
+        }
       }
     }
   };
