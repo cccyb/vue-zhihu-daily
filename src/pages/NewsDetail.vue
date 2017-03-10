@@ -6,51 +6,51 @@
       <span class="image-source">图片：{{this.data.image_source}}</span>
     </div>
     <div class="body-wrap" v-html="this.data.body"></div>
-    <news-menu></news-menu>
+    <news-menu :id="this.id"></news-menu>
   </div>
 </template>
 <script>
-  import axios from 'axios';
-  import NewsMenu from '../components/NewsMenu';
-  export default {
-    data() {
-      return {
-        id: '',
-        data: {}
-      };
+import axios from 'axios';
+import NewsMenu from '../components/NewsMenu';
+export default {
+  data() {
+    return {
+      id: '',
+      data: {}
+    };
+  },
+  created() {
+    this.fetchData();
+  },
+  methods: {
+    // 获取路由参数上的id新闻具体内容
+    fetchData: function() {
+      // 获得新闻id
+      this.id = this.$route.params.id;
+      axios.get('/news/' + this.id)
+      .then(response => {
+        response.data.body = this.attachBodyContent(response.data.body);
+        this.data = response.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
     },
-    created() {
-      this.fetchData();
-    },
-    methods: {
-      // 获取路由参数上的id新闻具体内容
-      fetchData: function() {
-        // 获得新闻id
-        this.id = this.$route.params.id;
-        axios.get('/news/' + this.id)
-				.then(response => {
-          response.data.body = this.attachBodyContent(response.data.body);
-					this.data = response.data;
-				})
-				.catch(error => {
-					console.log(error);
-				});
-      },
-      // 修改图片链接
-      attachImageUrl: function(srcUrl) {
-        if (srcUrl !== undefined) {
-          return srcUrl.replace(/http\w{0,1}:\/\/p/g, 'https://images.weserv.nl/?url=p');
-        }
-      },
-      // 修改返回数据中的body中的图片链接
-      attachBodyContent: function(body) {
-        return body.replace(/src="http\w{0,1}:\/\//g, 'src="https://images.weserv.nl/?url=');
+    // 修改图片链接
+    attachImageUrl: function(srcUrl) {
+      if (srcUrl !== undefined) {
+        return srcUrl.replace(/http\w{0,1}:\/\/p/g, 'https://images.weserv.nl/?url=p');
       }
     },
-    components: {
-      'news-menu': NewsMenu
+    // 修改返回数据中的body中的图片链接
+    attachBodyContent: function(body) {
+      return body.replace(/src="http\w{0,1}:\/\//g, 'src="https://images.weserv.nl/?url=');
     }
-  };
+  },
+  components: {
+    'news-menu': NewsMenu
+  }
+};
 </script>
 <style lang="sass" scope>
 @import "../assets/sass/components/NewsDetail.sass";

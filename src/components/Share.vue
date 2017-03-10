@@ -62,6 +62,7 @@ export default {
 
   },
   methods: {
+    // 隐藏分享菜单事件
     cancel: function() {
       this.$emit('cancel');
     }
