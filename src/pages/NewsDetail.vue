@@ -6,10 +6,12 @@
       <span class="image-source">图片：{{this.data.image_source}}</span>
     </div>
     <div class="body-wrap" v-html="this.data.body"></div>
+    <news-menu></news-menu>
   </div>
 </template>
 <script>
   import axios from 'axios';
+  import NewsMenu from '../components/NewsMenu';
   export default {
     data() {
       return {
@@ -18,33 +20,39 @@
       };
     },
     created() {
-      // 获得新闻id
-      this.id = this.$route.params.id;
-
-      // 获取指定id新闻具体内容
-			axios.get('/news/' + this.id)
+      this.fetchData();
+    },
+    methods: {
+      // 获取路由参数上的id新闻具体内容
+      fetchData: function() {
+        // 获得新闻id
+        this.id = this.$route.params.id;
+        axios.get('/news/' + this.id)
 				.then(response => {
-					this.data = this.attachBodyContent(response.data);
+          response.data.body = this.attachBodyContent(response.data.body);
+					this.data = response.data;
 				})
 				.catch(error => {
 					console.log(error);
 				});
-    },
-    methods: {
+      },
       // 修改图片链接
       attachImageUrl: function(srcUrl) {
         if (srcUrl !== undefined) {
           return srcUrl.replace(/http\w{0,1}:\/\/p/g, 'https://images.weserv.nl/?url=p');
         }
       },
-      attachBodyContent: function(data) {
-        data.body.replace(/src=['"]([^'"]+)[^>]*>/g, '<img src="https://images.weserv.nl/?url=p" />');
-        console.log(data.body);
-        return data;
+      // 修改返回数据中的body中的图片链接
+      attachBodyContent: function(body) {
+        return body.replace(/src="http\w{0,1}:\/\//g, 'src="https://images.weserv.nl/?url=');
       }
+    },
+    components: {
+      'news-menu': NewsMenu
     }
   };
 </script>
-<style lang="sass">
+<style lang="sass" scope>
 @import "../assets/sass/components/NewsDetail.sass";
+@import "/static/css/news_qa.auto.css";
 </style>

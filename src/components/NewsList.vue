@@ -18,18 +18,12 @@
 	export default {
 		data() {
 			return {
-				stories: {}
+				stories: {},
+				ids: [] // 新闻id数组
 			};
 		},
 		created() {
-			// 获取最新新闻
-			axios.get('/news/latest')
-				.then(response => {
-					this.stories = response.data.stories;
-				})
-				.catch(error => {
-					console.log(error);
-				});
+			this.fetchData();
 		},
 		methods: {
 			// 跳转到对应id的文章详情页
@@ -41,7 +35,22 @@
         if (srcUrl !== undefined) {
           return srcUrl.replace(/http\w{0,1}:\/\/p/g, 'https://images.weserv.nl/?url=p');
         }
-      }
+      },
+			// 获取最新新闻数据列表
+			fetchData: function() {
+				axios.get('/news/latest')
+					.then(response => {
+						this.stories = response.data.stories;
+
+						// 初始化新闻id数组
+						this.stories.map((story) => {
+							this.ids.push(story.id);
+						});
+					})
+					.catch(error => {
+						console.log(error);
+					});
+			}
     }
 	};
 </script>
