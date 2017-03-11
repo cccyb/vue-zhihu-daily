@@ -1,7 +1,11 @@
 <template>
 	<div class="news-list">
-		<ul class="list">
-			<li class="list-item" v-for="story in stories" :key="story.id" @click="viewDetail(story.id)">
+		<ul class="list" 
+			v-infinite-scroll="loadMore"
+			infinite-scroll-disabled="loading"
+			infinite-scroll-immediate-check=false
+			infinite-scroll-distance="40">
+			<li class="list-item" v-for="story in this.$store.state.stories" :key="story.id" @click="viewDetail(story.id)">
 				<span class="item-title">{{story.title}}</span>
 				<div class="image-wrapper">
 					<img class="item-image" :src="attachImageUrl(story.images[0])" :alt="story.title">
@@ -15,19 +19,27 @@
 <script>
 	import axios from 'axios';
 	import router from '../router';
+	import { Indicator } from 'mint-ui';
 	export default {
 		data() {
 			return {
-				stories: {},
-				ids: [] // 新闻id数组
+				loading: false,
+				date: Date,
+				dateStr: '' // 加载数据日期字符串格式
 			};
 		},
 		created() {
-			this.fetchData();
+			// 判断是否是第一次进入首页
+			if (this.$store.state.isFirstLoad) {
+				this.fetchData();
+				this.$store.commit('changeLoadState');
+			}
+			this.initDate();
 		},
 		methods: {
 			// 跳转到对应id的文章详情页
       viewDetail: function(id) {
+				this.$store.commit('changeCurrentNewsId', id);
         router.push({ name: 'newsDetail', params: { id: id } });
       },
 			// 修改图片链接
@@ -39,17 +51,77 @@
 			// 获取最新新闻数据列表
 			fetchData: function() {
 				axios.get('/news/latest')
-					.then(response => {
-						this.stories = response.data.stories;
+				.then(response => {
+					// 初始化新闻内容和id数组，并添加进state
+					let stories = response.data.stories;
+					let ids = stories.map(story => story.id);
 
-						// 初始化新闻id数组
-						this.stories.map((story) => {
-							this.ids.push(story.id);
-						});
-					})
-					.catch(error => {
-						console.log(error);
+					this.$store.commit('addNews', {
+						stories: stories,
+						ids: ids
 					});
+				})
+				.catch(error => {
+					console.log(error);
+				});
+			},
+			// 初始化当前日期
+			initDate: function() {
+				this.date = new Date();
+				this.changeDate2String();
+			},
+			// 将Date类型的日期转换成String类型
+			changeDate2String: function() {
+				let year = this.date.getFullYear();
+				let month = this.date.getMonth() + 1;
+				let day = this.date.getDate();
+				month = month < 10 ? '0' + month : month; // 格式化月份，小于10前置0
+				day = day < 10 ? '0' + day : day; // 格式化日期，小于10前置0;
+
+				this.dateStr = year + month + day;
+			},
+			// 将日期前推一天
+			decreaseDate: function() {
+				this.date.setDate(this.date.getDate() - 1);
+				this.changeDate2String();
+			},
+			// 根据日期获取更多新闻数据
+			fetchMoreData: function() {
+				axios.get('/news/before/' + this.dateStr)
+				.then(response => {
+					// 合并数据
+					let stories = response.data.stories;
+					let ids = stories.map(story => story.id);
+
+					this.$store.commit('addNews', {
+						stories: stories,
+						ids: ids
+					});
+
+					// 合并完数据关闭加载提示框
+					Indicator.close();
+				})
+				.catch(error => {
+					console.log(error);
+				});
+
+				this.decreaseDate();
+			},
+			// 加载更多新闻数据
+			loadMore: function() {
+				this.loading = true;
+
+				// 打开加载提示框
+				Indicator.open({
+					spinnerType: 'fading-circle'
+				});
+
+				// 加载更多数据并更新DOM
+				this.$nextTick(function () {
+					this.fetchMoreData();
+				});
+
+				this.loading = false;
 			}
     }
 	};

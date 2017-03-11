@@ -6,7 +6,7 @@
       <span class="image-source">图片：{{this.data.image_source}}</span>
     </div>
     <div class="body-wrap" v-html="this.data.body"></div>
-    <news-menu :id="this.id"></news-menu>
+    <news-menu @reloadId="fetchData"></news-menu>
   </div>
 </template>
 <script>
@@ -15,7 +15,6 @@ import NewsMenu from '../components/NewsMenu';
 export default {
   data() {
     return {
-      id: '',
       data: {}
     };
   },
@@ -26,8 +25,8 @@ export default {
     // 获取路由参数上的id新闻具体内容
     fetchData: function() {
       // 获得新闻id
-      this.id = this.$route.params.id;
-      axios.get('/news/' + this.id)
+      let id = this.$route.params.id;
+      axios.get('/news/' + id)
       .then(response => {
         response.data.body = this.attachBodyContent(response.data.body);
         this.data = response.data;
@@ -35,6 +34,8 @@ export default {
       .catch(error => {
         console.log(error);
       });
+
+      this.$store.commit('changeCurrentNewsId', id);
     },
     // 修改图片链接
     attachImageUrl: function(srcUrl) {

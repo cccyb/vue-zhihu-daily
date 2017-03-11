@@ -4,7 +4,7 @@
       <li class="menu-item" @click="goBack">
         <i class="icon iconfont icon-back"></i>
       </li>
-      <li class="menu-item">
+      <li class="menu-item" @click="goNext">
         <i class="icon iconfont icon-moreunfold"></i>
       </li>
       <li class="menu-item" @click="thumbUp" :class="{'dianzan-active': isDianzan}">
@@ -31,10 +31,8 @@
 import router from '../router';
 import Share from './Share';
 import axios from 'axios';
+
 export default {
-  props: {
-    id: Number
-  },
   data() {
     return {
       long_comments: 0, // 长评论总数
@@ -48,10 +46,14 @@ export default {
   created() {
     this.fetchStoryExtra();
   },
+  watch: {
+    // 如果路由有变化，会再次执行该方法
+    '$route': 'reloadId'
+  },
   methods: {
     // 获取新闻额外信息
     fetchStoryExtra: function() {
-      axios.get('/story-extra/' + this.id)
+      axios.get('/story-extra/' + this.$store.state.id)
       .then(response => {
         this.long_comments = response.data.long_comments;
         this.popularity = response.data.popularity;
@@ -82,6 +84,14 @@ export default {
     // 隐藏分享组件
     hideMenu: function() {
       this.popupVisible = false;
+    },
+    // 载入下一篇新闻点击事件
+    goNext: function() {
+      router.push({ name: 'newsDetail', params: { id: this.$store.state.nextId } });
+    },
+    // 刷新路由属性中的id，重载页面
+    reloadId: function() {
+      this.$emit('reloadId');
     }
   },
   components: {
