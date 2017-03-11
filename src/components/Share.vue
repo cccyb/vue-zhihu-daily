@@ -47,7 +47,7 @@
         </div>
       </mt-swipe-item>
     </mt-swipe>
-    <div class="button" @click="collect">{{collectText}}</div>
+    <div class="button" @click="toggleCollect">{{this.$store.getters.collectText}}</div>
     <div class="button" @click="cancel">取消</div>
   </div>
 </template>
@@ -55,20 +55,10 @@
 export default {
   data() {
     return {
-      isCollect: false
     };
   },
-  computed: {
-    collectText() {
-      return this.isCollect ? '取消收藏' : '收藏';
-    }
-  },
   created() {
-    if (this.$store.state.collectIds.indexOf(this.$store.state.id) < 0) {
-      this.isCollect = false;
-    } else {
-      this.isCollect = true;
-    }
+    this.$store.commit('judgeCollectState');
   },
   methods: {
     // 隐藏分享菜单事件
@@ -76,13 +66,8 @@ export default {
       this.$emit('cancel');
     },
     // 收藏文章
-    collect: function() {
-      if (!this.isCollect) {
-        this.$store.commit('addCollect');
-      } else {
-        this.$store.commit('cancelCollect');
-      }
-      this.isCollect = !this.isCollect;
+    toggleCollect: function() {
+      this.$store.commit('toggleCollect');
     }
   }
 };

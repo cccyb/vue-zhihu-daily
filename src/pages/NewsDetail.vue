@@ -36,6 +36,7 @@ export default {
       });
 
       this.$store.commit('changeCurrentNewsId', id);
+      this.$store.commit('judgeCollectState');
     },
     // 修改图片链接
     attachImageUrl: function(srcUrl) {

@@ -10,7 +10,13 @@ export default new Vuex.Store({
     id: '', // 当前新闻详情的id
     nextId: '', // 下一篇新闻的id
     isFirstLoad: true, // 是否是第一次进入首页
-    collectIds: [] // 收藏新闻数组id
+    collectIds: [], // 收藏新闻数组id
+    isCollect: false // 当前文章是否已收藏
+  },
+  getters: {
+    collectText: state => {
+      return state.isCollect ? '取消收藏' : '收藏';
+    } 
   },
   mutations: {
     // 新增新闻内容
@@ -28,14 +34,23 @@ export default new Vuex.Store({
       let index = state.ids.indexOf(id);
       state.nextId = state.ids[++index];
     },
-    // 新增收藏新闻id
-    addCollect(state) {
-      state.collectIds.push(state.id);
+    // 收藏新闻
+    toggleCollect(state) {
+      let index = state.collectIds.indexOf(state.id);
+      if (index < 0) {
+        state.collectIds.push(state.id);
+      } else {
+        state.collectIds.splice(index, 1);
+      }
+      state.isCollect = !state.isCollect;
     },
-    // 取消收藏新闻id
-    cancelCollect(state) {
-      let index = state.ids.indexOf(state.id);
-      state.collectIds.splice(index, 1);
+    // 判断当前收藏状态
+    judgeCollectState(state) {
+      if (state.collectIds.indexOf(state.id) < 0) {
+        state.isCollect = false;
+      } else {
+        state.isCollect = true;
+      }
     }
   }
 });
