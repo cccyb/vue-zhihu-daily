@@ -48,6 +48,13 @@ module.exports = {
         pathRewrite: {
           '^/story-extra': '/story-extra'
         }
+      },
+      '/news/before': {
+        target: 'http://news-at.zhihu.com/api/4',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/news/before': '/news/before'
+        }
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy" with this
