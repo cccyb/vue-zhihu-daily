@@ -23,7 +23,7 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 8080,
+    port: 8088,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
@@ -54,6 +54,13 @@ module.exports = {
         changeOrigin: true,
         pathRewrite: {
           '^/news/before': '/news/before'
+        }
+      },
+      '/story': {
+        target: 'http://news-at.zhihu.com/api/4',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/story': '/story'
         }
       }
     },
