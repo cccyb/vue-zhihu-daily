@@ -9,14 +9,14 @@
       </li>
       <li class="menu-item" @click="thumbUp" :class="{'dianzan-active': isDianzan}">
         <i class="icon iconfont icon-iconfontdianzan"></i>
-        <span class="dianzan-number">{{popularity}}</span>
+        <span class="dianzan-number">{{this.$store.state.popularity}}</span>
       </li>
       <li class="menu-item" @click="showMenu">
         <i class="icon iconfont icon-fenxiang"></i>
       </li>
-      <li class="menu-item">
+      <li class="menu-item" @click="showComment">
         <i class="icon iconfont icon-pinglun"></i>
-        <span class="comments-number">4</span>
+        <span class="comments-number">{{this.$store.state.comments}}</span>
       </li>
     </ul>
     <mt-popup
@@ -35,10 +35,6 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      long_comments: 0, // 长评论总数
-      popularity: 0, // 点赞总数
-      short_comments: 0, // 短评论总数
-      comments: 0, // 评论总数
       isDianzan: false, // 是否已点赞
       popupVisible: false // 分享组件是否展示
     };
@@ -55,10 +51,10 @@ export default {
     fetchStoryExtra: function() {
       axios.get('/story-extra/' + this.$store.state.id)
       .then(response => {
-        this.long_comments = response.data.long_comments;
-        this.popularity = response.data.popularity;
-        this.short_comments = response.data.short_comments;
-        this.comments = response.data.comments;
+        this.$store.state.long_comments = response.data.long_comments;
+        this.$store.state.popularity = response.data.popularity;
+        this.$store.state.short_comments = response.data.short_comments;
+        this.$store.state.comments = response.data.comments;
       })
       .catch(error => {
         console.log(error);
@@ -71,9 +67,9 @@ export default {
     // 点赞事件
     thumbUp: function() {
       if (!this.isDianzan) {
-        this.popularity ++;
+        this.$store.state.popularity++;
       } else {
-        this.popularity --;
+        this.$store.state.popularity--;
       }
       this.isDianzan = !this.isDianzan;
     },
@@ -92,6 +88,11 @@ export default {
     // 刷新路由属性中的id，重载页面
     reloadId: function() {
       this.$emit('reloadId');
+      this.fetchStoryExtra();
+    },
+    // 查看评论界面
+    showComment: function() {
+      router.push({ name: 'comment', params: { id: this.$store.state.id } });
     }
   },
   components: {
