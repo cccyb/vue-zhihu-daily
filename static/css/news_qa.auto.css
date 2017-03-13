@@ -284,7 +284,7 @@ ol {
 .hot-comment {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-.comment-label {
+/*.comment-label {
   font-size: 16px;
   color: #333;
   line-height: 1.5em;
@@ -316,7 +316,7 @@ ol {
   color: #b8b8b8;
   font-size: 12px;
   right: 0;
-}
+}*/
 .night .comment-label {
   color: #b8b8b8;
   border-top: 1px solid #303030;

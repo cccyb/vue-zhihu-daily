@@ -54,7 +54,7 @@ export default {
   }
 };
 </script>
-<style lang="sass" scope>
+<style lang="sass" scoped>
 @import "../assets/sass/components/NewsDetail.sass";
 @import "/static/css/news_qa.auto.css";
 </style>
