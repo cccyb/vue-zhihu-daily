@@ -1,10 +1,10 @@
 
 @font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1489415363858'); /* IE9*/
-  src: url('iconfont.eot?t=1489415363858#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('iconfont.woff?t=1489415363858') format('woff'), /* chrome, firefox */
-  url('iconfont.ttf?t=1489415363858') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('iconfont.svg?t=1489415363858#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot?t=1489492250806'); /* IE9*/
+  src: url('iconfont.eot?t=1489492250806#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1489492250806') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1489492250806') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1489492250806#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -58,6 +58,10 @@
 .icon-shouyeshouye:before { content: "\e629"; }
 
 .icon-xiaoxi:before { content: "\e6bd"; }
+
+.icon-downdouble:before { content: "\e67e"; }
+
+.icon-updouble:before { content: "\e688"; }
 
 .icon-yinxiangbiji:before { content: "\e695"; }
 
