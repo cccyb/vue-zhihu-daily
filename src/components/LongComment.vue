@@ -10,7 +10,12 @@
         <span class="author">{{comment.author}}</span>
         <i class="icon iconfont icon-dianzan">{{comment.likes}}</i>
         <p class="text">{{comment.content}}</p>
+        <p class="reply" :class="hideReply: ">
+          <span class="reply-author">//危城SAMA:</span>
+          这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的
+        </p>
         <span class="date">{{changeTime(comment.time)}}</span>
+        <span class="expand" @click="toggleReply">展开</span>
       </div>
     </li>
   </ul>
@@ -48,6 +53,10 @@ export default {
     // 转换时间戳
     changeTime: function(time) {
       return moment(time).format('MM-DD HH:mm');
+    },
+    // 切换回复
+    toggleReply() {
+
     }
   }
 };
