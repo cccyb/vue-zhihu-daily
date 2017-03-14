@@ -1,8 +1,9 @@
 <template>
 <div class="long-comment">
   <div class="box"></div>
-  <div class="long-comment-number" v-if="comments.length !== 0">{{this.$store.state.long_comments}}条长评</div>
-  <ul class="comment-list" :class="{isEmpty: comments.length === 0}">
+  <div class="long-comment-number" v-show="this.comments.length !== 0">{{this.$store.state.long_comments}}条长评</div>
+  <ul class="comment-list">
+    <i class="icon iconfont icon-shafa"></i>
     <li class="comment-item" v-for="comment in this.comments">
       <img :src="attachImageUrl(comment.avatar)" :alt="comment.author" class="avatar">
       <div class="comment-content">
