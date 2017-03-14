@@ -2,6 +2,7 @@
 <div class="comment">
   <div class="head">{{this.$store.state.comments}}条点评</div>
   <long-comment></long-comment>
+  <short-comment></short-comment>
   <div class="foot">
     <i class="icon iconfont icon-back" @click="backToDetail"></i>
     <i class="icon iconfont icon-bianxie">写评论</i>
@@ -11,6 +12,7 @@
 <script>
 import router from '../router';
 import LongComment from '../components/LongComment';
+import ShortComment from '../components/ShortComment';
 export default {
   methods: {
     backToDetail() {
@@ -18,7 +20,8 @@ export default {
     }
   },
   components: {
-    'long-comment': LongComment
+    'long-comment': LongComment,
+    'short-comment': ShortComment
   }
 };
 </script>

@@ -1,9 +1,10 @@
 <template>
-<div class="long-comment">
-  <div class="box"></div>
-  <div class="long-comment-number" v-show="this.comments.length !== 0">{{this.$store.state.long_comments}}条长评</div>
-  <ul class="comment-list">
-    <i class="icon iconfont icon-shafa"></i>
+<div class="short-comment">
+  <div class="short-comment-number" v-show="this.comments.length !== 0" @click="toggleShortComment">
+    {{this.$store.state.short_comments}}条短评
+    <i class="icon iconfont" :class="[isShow ? 'icon-updouble' : 'icon-downdouble']"></i>
+  </div>
+  <ul class="comment-list" :class="{hide: !isShow}">
     <li class="comment-item" v-for="comment in this.comments">
       <img :src="attachImageUrl(comment.avatar)" :alt="comment.author" class="avatar">
       <div class="comment-content">
@@ -22,22 +23,27 @@ import moment from 'moment';
 export default {
   data() {
     return {
-      comments: []
+      comments: [],
+      isShow: false // 是否展开短评
     };
   },
   created() {
     this.fetchData();
   },
   methods: {
-    // 获取长评数据
+    // 获取短评数据
     fetchData() {
-      axios.get('/story/' + this.$store.state.id + '/long-comments')
+      axios.get('/story/' + this.$store.state.id + '/short-comments')
       .then(response => {
         this.comments = response.data.comments;
       })
       .catch(error => {
         console.log(error);
       });
+    },
+    // 切换短评展示
+    toggleShortComment() {
+      this.isShow = !this.isShow;
     },
     // 修改图片链接
     attachImageUrl: function(srcUrl) {
@@ -53,5 +59,5 @@ export default {
 };
 </script>
 <style lang="sass">
-@import "../assets/sass/components/LongComment.sass";
+@import "../assets/sass/components/ShortComment.sass";
 </style>
