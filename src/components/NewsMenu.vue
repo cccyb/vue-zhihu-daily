@@ -8,7 +8,7 @@
         <i class="icon iconfont icon-moreunfold"></i>
       </li>
       <li class="menu-item" @click="thumbUp" :class="{'dianzan-active': isDianzan}">
-        <i class="icon iconfont icon-iconfontdianzan"></i>
+        <i class="icon iconfont icon-dianzan"></i>
         <span class="dianzan-number">{{this.$store.state.popularity}}</span>
       </li>
       <li class="menu-item" @click="showMenu">

@@ -10,12 +10,12 @@
         <span class="author">{{comment.author}}</span>
         <i class="icon iconfont icon-dianzan">{{comment.likes}}</i>
         <p class="text">{{comment.content}}</p>
-        <p class="reply" :class="hideReply: ">
-          <span class="reply-author">//危城SAMA:</span>
-          这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的这个的
+        <p class="reply" :class="{hideReply: isReplyShow}" v-if="comment.reply_to !== 'undifined'">
+          <span class="reply-author">//{{comment.reply_to.author}}:</span>
+          {{comment.reply_to.content}}
         </p>
         <span class="date">{{changeTime(comment.time)}}</span>
-        <span class="expand" @click="toggleReply">展开</span>
+        <span class="expand" v-if="comment.reply_to !== 'undifined'">{{expandText}}</span>
       </div>
     </li>
   </ul>
@@ -27,15 +27,21 @@ import moment from 'moment';
 export default {
   data() {
     return {
-      comments: []
+      comments: [],
+      isReplyShow: false // 回复是否展开
     };
   },
   created() {
     this.fetchData();
   },
+  computed: {
+    expandText: function() {
+      return this.isReplyShow ? '收起' : '展开';
+    }
+  },
   methods: {
     // 获取长评数据
-    fetchData() {
+    fetchData: function() {
       axios.get('/story/' + this.$store.state.id + '/long-comments')
       .then(response => {
         this.comments = response.data.comments;
@@ -55,8 +61,8 @@ export default {
       return moment(time).format('MM-DD HH:mm');
     },
     // 切换回复
-    toggleReply() {
-
+    toggleReply: function() {
+      this.isReplyShow = !this.isReplyShow;
     }
   }
 };
