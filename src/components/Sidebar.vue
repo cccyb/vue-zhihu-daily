@@ -1,4 +1,7 @@
 <template>
+<div class="sidebar">
+111
+</div>
 </template>
 <script>
 export default {
