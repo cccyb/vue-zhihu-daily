@@ -11,12 +11,13 @@
         <span class="author">{{comment.author}}</span>
         <i class="icon iconfont icon-dianzan">{{comment.likes}}</i>
         <p class="text">{{comment.content}}</p>
-        <p class="reply" :class="{hideReply: isReplyShow}" v-if="comment.reply_to !== 'undifined'">
-          <span class="reply-author">//{{comment.reply_to.author}}:</span>
-          {{comment.reply_to.content}}
-        </p>
+        <template v-if="comment.reply_to !== undefined">
+          <p class="reply" >
+            <span class="reply-author">//{{comment.reply_to.author}}:</span>
+            {{comment.reply_to.content}}
+         </p>
+        </template>
         <span class="date">{{changeTime(comment.time)}}</span>
-        <span class="expand" v-if="comment.reply_to !== 'undifined'">{{expandText}}</span>
       </div>
     </li>
   </ul>
@@ -29,17 +30,11 @@ export default {
   data() {
     return {
       comments: [],
-      isShow: false, // 是否展开短评,
-      isReplyShow: false // 回复是否展开
+      isShow: false // 是否展开短评,
     };
   },
   created() {
     this.fetchData();
-  },
-  computed: {
-    expandText: function() {
-      return this.isReplyShow ? '收起' : '展开';
-    }
   },
   methods: {
     // 获取短评数据
@@ -67,10 +62,6 @@ export default {
     // 转换时间戳
     changeTime: function(time) {
       return moment(time).format('MM-DD HH:mm');
-    },
-    // 切换回复
-    toggleReply: function() {
-      this.isReplyShow = !this.isReplyShow;
     }
   }
 };
