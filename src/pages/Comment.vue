@@ -5,7 +5,7 @@
   <short-comment></short-comment>
   <div class="foot">
     <i class="icon iconfont icon-back" @click="backToDetail"></i>
-    <i class="icon iconfont icon-bianxie">写评论</i>
+    <i class="icon iconfont icon-bianxie" @click="writeComment">写评论</i>
   </div>
 </div>
 </template>
@@ -15,8 +15,13 @@ import LongComment from '../components/LongComment';
 import ShortComment from '../components/ShortComment';
 export default {
   methods: {
+    // 返回文章详情
     backToDetail() {
-      router.push({ name: 'newsDetail', params: { id: this.$store.state.id } });
+      router.go(-1);
+    },
+    // 写点评
+    writeComment() {
+      router.push({ name: 'writeComment', params: { id: this.$store.state.id } });
     }
   },
   components: {
@@ -25,6 +30,6 @@ export default {
   }
 };
 </script>
-<style lang="sass">
+<style lang="sass" scoped>
 @import "../assets/sass/components/Comment.sass";
 </style>
