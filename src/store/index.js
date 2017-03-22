@@ -5,6 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    width: 0, // 浏览器宽度
+    height: 0, // 浏览器高度 
     stories: [], // 新闻内容数组
     ids: [], // 新闻id数组
     id: '', // 当前新闻详情的id
@@ -23,6 +25,11 @@ export default new Vuex.Store({
     } 
   },
   mutations: {
+    // 初始化浏览器尺寸
+    initSize(state, payload) {
+      state.width = payload.width;
+      state.height = payload.height;
+    },
     // 新增新闻内容
     addNews(state, payload) {
       state.stories = state.stories.concat(payload.stories);
