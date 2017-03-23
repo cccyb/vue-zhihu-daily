@@ -76,6 +76,13 @@ module.exports = {
         pathRewrite: {
           '^/theme': '/theme'
         }
+      },
+      '/editor': {
+        target: 'http://news-at.zhihu.com/api/4',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/editor': '/editor'
+        }
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy" with this

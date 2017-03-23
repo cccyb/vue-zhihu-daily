@@ -43,7 +43,7 @@ export default new Router({
       component: EditorsList
     },
     {
-      path: '/editor/:id',
+      path: '/editor/:editorId/:editorName',
       name: 'editor',
       component: Editor
     }

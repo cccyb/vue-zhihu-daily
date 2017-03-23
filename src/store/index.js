@@ -17,7 +17,8 @@ export default new Vuex.Store({
     comments: 0, // 评论总数
     long_comments: 0, // 长评论总数
     short_comments: 0, // 短评论总数
-    popularity: 0 // 点赞总数
+    popularity: 0, // 点赞总数
+    newsType: -1 // 新闻内容类型 0 普通新闻， 1 主题新闻
   },
   getters: {
     collectText: state => {
@@ -62,6 +63,10 @@ export default new Vuex.Store({
       } else {
         state.isCollect = true;
       }
+    },
+    // 修改新闻类型
+    changeNewsType(state, type) {
+      state.newsType = type;
     }
   }
 });

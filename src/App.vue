@@ -6,7 +6,13 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  created() {
+    this.$store.commit('initSize', {
+      width: window.screen.width,
+      height: window.screen.height
+    });
+  }
 };
 </script>
 

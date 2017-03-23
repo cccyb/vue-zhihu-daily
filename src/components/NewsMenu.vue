@@ -60,9 +60,9 @@ export default {
         console.log(error);
       });
     },
-    // 返回首页点击事件
+    // 返回上一页事件
     goBack: function() {
-      router.push({ name: 'index' });
+      router.go(-1);
     },
     // 点赞事件
     thumbUp: function() {

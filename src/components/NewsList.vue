@@ -40,6 +40,7 @@
 			// 跳转到对应id的文章详情页
       viewDetail: function(id) {
 				this.$store.commit('changeCurrentNewsId', id);
+				this.$store.commit('changeNewsType', 0);
         router.push({ name: 'newsDetail', params: { id: id } });
       },
 			// 修改图片链接
