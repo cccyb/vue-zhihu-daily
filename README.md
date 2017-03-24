@@ -76,57 +76,57 @@ npm run build
 ## 目录结构
 ```
 .
-|-- build								// webpack配置文件
-|-- config							// 项目打包路径
-|-- dist								// 项目部署文件，放在服务器即可正常访问
-|-- src								//	源码目录
-|	|-- assets						// 资源目录
-|	|	|-- images					// 图片目录
-|	|	|-- sass						// sass目录
-|	|		|-- components			// 组件sass目录
-|	|		|-- pages					// 页面sass目录
-|	|-- components					// 组件
-|	|	|-- LongComment.vue			// 长评组件
-|	|	|-- NewsList.vue				// 新闻列表组件
-|	|	|-- NewsMenu.vue				// 新闻详情底部菜单组件
-|	|	|-- Share.vue					// 新闻详情分享弹框组件
-|	|	|-- ShortComment.vue		// 短评组件
-|	|	|-- Sidebar.vue				// 侧边栏组件
-|	|	|-- Swipe.vue					// 轮播图组件
-|	|-- pages							// 页面
-|	|	|-- Collect.vue				// 收藏页面
-|	|	|-- Comment.vue				// 评论页面
-|	|	|-- Editor.vue				// 查看编辑个人信息页面
-|	|	|-- EditorList.vue			// 编辑列表页面
-|	|	|-- Index.vue					// 首页
-|	|	|-- NewsDetail.vue			// 新闻详情页面
-|	|	|-- ThemeDetail.vue			// 主题页面
-|	|	|-- WriteCommnet.vue		// 编写评论页面
+|-- build						// webpack配置文件
+|-- config						// 项目打包路径
+|-- dist						// 项目部署文件，放在服务器即可正常访问
+|-- src							// 源码目录
+|	|-- assets					// 资源目录
+|	|	|-- images				// 图片目录
+|	|	|-- sass				// sass目录
+|	|		|-- components		// 组件sass目录
+|	|		|-- pages			// 页面sass目录
+|	|-- components				// 组件
+|	|	|-- LongComment.vue		// 长评组件
+|	|	|-- NewsList.vue		// 新闻列表组件
+|	|	|-- NewsMenu.vue		// 新闻详情底部菜单组件
+|	|	|-- Share.vue			// 新闻详情分享弹框组件
+|	|	|-- ShortComment.vue	// 短评组件
+|	|	|-- Sidebar.vue			// 侧边栏组件
+|	|	|-- Swipe.vue			// 轮播图组件
+|	|-- pages					// 页面
+|	|	|-- Collect.vue			// 收藏页面
+|	|	|-- Comment.vue			// 评论页面
+|	|	|-- Editor.vue			// 查看编辑个人信息页面
+|	|	|-- EditorList.vue		// 编辑列表页面
+|	|	|-- Index.vue			// 首页
+|	|	|-- NewsDetail.vue		// 新闻详情页面
+|	|	|-- ThemeDetail.vue		// 主题页面
+|	|	|-- WriteCommnet.vue	// 编写评论页面
 |	|-- router
-|	|	|-- index.js					// 路由配置
+|	|	|-- index.js			// 路由配置
 |	|-- store
-|	|	|-- index.js					// vuex配置
-|	|-- App.vue						// 页面入口文件
-|	|-- main.js						// 程序入口文件，加载各种公共组件
-|-- static							// 静态文件目录
+|	|	|-- index.js			// vuex配置
+|	|-- App.vue					// 页面入口文件
+|	|-- main.js					// 程序入口文件，加载各种公共组件
+|-- static						// 静态文件目录
 |	|-- css
-|	|	|-- animate.css				// 动画css
-|	|	|-- iconfont.css				// 图标字体css
-|	|	|-- icontont.ttf				// 图标字体ttf
-|	|	|-- iconfont.woff			// 图标字体woff
-|	|	|-- news_qa_auto.css		// 页面详情内容css
-|	|	|-- reset.css					// 统一浏览器样式css
-|-- .babelrc							// ES6语法编译配置
-|-- .editorconfig					// 代码编写规格配置
-|-- .eslintignore					// 忽略eslint检查文件配置
-|-- .eslint.js						// eslint配置文件
-|-- .gitattributes					// 修改项目在github显示类型配置文件
-|-- .gitignore						// git忽略上传文件
+|	|	|-- animate.css			// 动画css
+|	|	|-- iconfont.css		// 图标字体css
+|	|	|-- icontont.ttf		// 图标字体ttf
+|	|	|-- iconfont.woff		// 图标字体woff
+|	|	|-- news_qa_auto.css	// 页面详情内容css
+|	|	|-- reset.css			// 统一浏览器样式css
+|-- .babelrc					// ES6语法编译配置
+|-- .editorconfig				// 代码编写规格配置
+|-- .eslintignore				// 忽略eslint检查文件配置
+|-- .eslint.js					// eslint配置文件
+|-- .gitattributes				// 修改项目在github显示类型配置文件
+|-- .gitignore					// git忽略上传文件
 |-- .postcssrc.js
-|-- index.html						// 入口html文件
-|-- package.json						// 项目及工具的依赖配置文件
-|-- README.md							// readme说明
-|-- yarn.lock							// yarn文件
+|-- index.html					// 入口html文件
+|-- package.json				// 项目及工具的依赖配置文件
+|-- README.md					// readme说明
+|-- yarn.lock					// yarn文件
 .
 ```
 ## Todo
