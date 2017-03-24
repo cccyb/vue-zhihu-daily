@@ -7,6 +7,7 @@ import WirteComment from '../pages/WriteComment';
 import ThemeDetail from '../pages/ThemeDetail';
 import EditorsList from '../pages/EditorsList';
 import Editor from '../pages/Editor';
+import Collect from '../pages/Collect';
 
 Vue.use(Router);
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/editor/:editorId/:editorName',
       name: 'editor',
       component: Editor
+    },
+    {
+      path: '/collect',
+      name: 'collect',
+      component: Collect
     }
   ]
 });
