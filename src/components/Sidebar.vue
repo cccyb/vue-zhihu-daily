@@ -6,7 +6,7 @@
         <span class="name">陈钰博</span>
       </div>
       <div class="menubar">
-        <div>
+        <div @click="goCollect">
           <i class="icon iconfont icon-shoucang"></i><br>
           <span>收藏</span>
         </div>
@@ -22,6 +22,7 @@
       <div class="menu-wrapper" ref="menuWrapper">
         <ul>
           <li class="menu-item" v-for="item in data" @click="themeDetail(item.id)">
+            <i class="icon iconfont icon-shouyeshouye" v-if="item.id === -1"></i>
             {{item.name}}
             <i class="icon iconfont icon-more"></i>
           </li>
@@ -37,8 +38,9 @@
 </template>
 <script>
 import axios from 'axios';
-// import BScroll from 'better-scroll';
+import BScroll from 'better-scroll';
 import router from '../router';
+
 export default {
   props: {
     isShowSidebar: {
@@ -72,11 +74,11 @@ export default {
           name: '首页'
         });
 
-        // this.$nextTick(() => {
-        //   this.menuScroll = new BScroll(this.$refs.menuWrapper, {
-        //     click: true
-        //   });
-        // });
+        this.$nextTick(() => {
+          this.menuScroll = new BScroll(this.$refs.menuWrapper, {
+            click: true
+          });
+        });
       })
       .catch(error => {
         console.log(error);
@@ -89,6 +91,10 @@ export default {
       } else { // 不是首页
         router.push({ name: 'themeDetail', params: { id: id } });
       }
+    },
+    // 跳转收藏也
+    goCollect() {
+      router.push({ name: 'collect' });
     }
   }
 };

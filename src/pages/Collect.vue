@@ -27,7 +27,7 @@
     methods: {
       // 返回
       back() {
-        router.go(-1);
+        router.push({ name: 'index' });
       },
       // 修改图片链接
       attachImageUrl: function(srcUrl) {
