@@ -28,5 +28,5 @@ export default {
 </script>
 
 <style lang="sass">
-@import "../assets/sass/components/WriteComment.sass";
+@import "../assets/sass/pages/WriteComment.sass";
 </style>

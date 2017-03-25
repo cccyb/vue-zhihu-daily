@@ -20,7 +20,6 @@ export default {
     };
   },
   created() {
-    console.log(this.$route);
     this.fetchData();
   },
   methods: {
@@ -28,7 +27,6 @@ export default {
     fetchData() {
       axios.get('/editor/' + this.$route.params.editorId + '/profile-page/ios')
         .then(response => {
-          // console.log(response.data);
           response.data = this.attachBodyContent(response.data);
           this.data = response.data;
         });
@@ -46,5 +44,5 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import "../assets/sass/components/Editor.sass";
+@import "../assets/sass/pages/Editor.sass";
 </style>

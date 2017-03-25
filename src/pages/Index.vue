@@ -37,5 +37,5 @@ export default {
 };
 </script>
 <style lang="sass" scoped>
-@import "../assets/sass/components/Index.sass";
+@import "../assets/sass/pages/Index.sass";
 </style>

@@ -78,5 +78,5 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import "../assets/sass/components/ThemeDetail.sass";
+@import "../assets/sass/pages/ThemeDetail.sass";
 </style>

@@ -31,5 +31,5 @@ export default {
 };
 </script>
 <style lang="sass" scoped>
-@import "../assets/sass/components/Comment.sass";
+@import "../assets/sass/pages/Comment.sass";
 </style>
