@@ -62,7 +62,14 @@ export default {
     },
     // 返回上一页事件
     goBack: function() {
-      router.go(-1);
+      let type = this.$store.state.newsType;
+      if (type === 0) {
+        router.push({ name: 'index' });
+      } else if (type === 1) {
+        router.push({ name: 'themeDetail' });
+      } else if (type === 2) {
+        router.push({ name: 'collect' });
+      }
     },
     // 点赞事件
     thumbUp: function() {
