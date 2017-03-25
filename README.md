@@ -1,7 +1,7 @@
 # vue-zhihu-daily
 > 这是一个基于Vue全家桶开发的知乎日报WebApp，页面样式主要参考iOS版知乎日报APP。
 
-> 个人博客：[陈钰博的博客](chenyubo.me)
+> 个人博客：[陈钰博的博客](http://www.chenyubo.me)
 
 > 项目github地址：[vue-zhihu-daily](https://github.com/cccyb/vue-zhihu-daily)
 
