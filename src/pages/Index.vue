@@ -1,12 +1,14 @@
 <template>
   <div class="index">
     <sidebar :isShowSidebar="isShowSidebar" v-on:hideSidebar="toggleSidebar"></sidebar>
-    <header>
-      <i class="icon iconfont icon-fenlei" @click="toggleSidebar"></i>
-      <span class="hot-news">今日热闻</span>
-    </header>
-    <swipe></swipe>
-    <newsList></newsList>
+    <mt-loadmore :top-method="loadTop" :topDistance="40" ref="loadmore">
+      <header>
+        <i class="icon iconfont icon-fenlei" @click="toggleSidebar"></i>
+        <span class="hot-news">今日热闻</span>
+      </header>
+      <swipe></swipe>
+      <newsList ref="newsList"></newsList>
+    </mt-loadmore>
   </div>
 </template>
 <script>
@@ -32,6 +34,11 @@ export default {
     // 切换侧边栏显示状态
     toggleSidebar() {
       this.isShowSidebar = !this.isShowSidebar;
+    },
+    // 下拉刷新数据
+    loadTop() {
+      this.$refs.newsList.$emit('refresh');
+      this.$refs.loadmore.onTopLoaded();
     }
   }
 };

@@ -37,6 +37,10 @@ export default new Vuex.Store({
       state.stories = state.stories.concat(payload.stories);
       state.ids = state.ids.concat(payload.ids);
     },
+    // 刷新首页新闻内容
+    refreshNews(state) {
+      state.stories = [];
+    },
     // 修改是否是第一次进入首页
     changeLoadState(state) {
       state.isFirstLoad = !state.isFirstLoad;

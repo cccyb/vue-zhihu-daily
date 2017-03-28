@@ -35,6 +35,11 @@
 				this.$store.commit('changeLoadState');
 			}
 			this.initDate();
+
+			// 下拉刷新数据
+			this.$on('refresh', () => {
+				this.refreshData();
+			});
 		},
 		methods: {
 			// 跳转到对应id的文章详情页
@@ -64,6 +69,15 @@
 				})
 				.catch(error => {
 					console.log(error);
+				});
+			},
+			// 刷新数据
+			refreshData() {
+				// 刷新数据
+				this.$store.commit('refreshNews');
+
+				this.$nextTick(() => {
+					this.fetchData();
 				});
 			},
 			// 初始化当前日期
