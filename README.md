@@ -161,6 +161,10 @@ npm run build
 - [ ] localStorage
 - ...
 
+## Log
+### 2017-03-28
+`Add`：新增首页下拉刷新功能
+
 ## 总结
 ### 1.知乎接口跨域问题
 调用知乎API时遇到了跨域问题，但是知乎的接口好像不支持jsonp，谷歌一波发现可以使用vue-cli自带的config的proxyTable文件配置进行解决，配置非常简单：
