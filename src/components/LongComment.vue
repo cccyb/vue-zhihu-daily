@@ -37,7 +37,7 @@ export default {
   methods: {
     // 获取长评数据
     fetchData: function() {
-      axios.get('/story/' + this.$store.state.id + '/long-comments')
+      axios.get('api/story/' + this.$store.state.id + '/long-comments')
       .then(response => {
         this.comments = response.data.comments;
       })

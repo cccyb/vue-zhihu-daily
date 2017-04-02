@@ -5,12 +5,16 @@ import App from './App';
 import router from './router';
 import store from './store';
 import MintUI from 'mint-ui';
+import VueScroll from 'vue-scroll';
 import 'mint-ui/lib/style.css';
 
 Vue.config.productionTip = false;
 
-// 使用MintUI
+// 使用 MintUI
 Vue.use(MintUI);
+
+// 使用 vue-scroll
+Vue.use(VueScroll);
 
 /* eslint-disable no-new */
 new Vue({

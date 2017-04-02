@@ -26,7 +26,7 @@ export default {
     fetchData: function() {
       // 获得新闻id
       let id = this.$route.params.id;
-      axios.get('/news/' + id)
+      axios.get('api/news/' + id)
       .then(response => {
         response.data.body = this.attachBodyContent(response.data.body);
         this.data = response.data;

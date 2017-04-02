@@ -56,7 +56,7 @@
       },
 			// 获取最新新闻数据列表
 			fetchData: function() {
-				axios.get('/news/latest')
+				axios.get('api/news/latest')
 				.then(response => {
 					// 初始化新闻内容和id数组，并添加进state
 					let stories = response.data.stories;
@@ -102,7 +102,7 @@
 			},
 			// 根据日期获取更多新闻数据
 			fetchMoreData: function() {
-				axios.get('/news/before/' + this.dateStr)
+				axios.get('api/news/before/' + this.dateStr)
 				.then(response => {
 					// 合并数据
 					let stories = response.data.stories;

@@ -39,7 +39,7 @@ export default {
   methods: {
     // 获取短评数据
     fetchData() {
-      axios.get('/story/' + this.$store.state.id + '/short-comments')
+      axios.get('api/story/' + this.$store.state.id + '/short-comments')
       .then(response => {
         this.comments = response.data.comments;
       })

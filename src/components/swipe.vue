@@ -20,7 +20,7 @@
     },
     created() {
       // 获取最热新闻
-      axios.get('/news/latest')
+      axios.get('api/news/latest')
         .then(response => {
           this.topStories = response.data.top_stories;
         })

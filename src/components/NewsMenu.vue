@@ -49,7 +49,7 @@ export default {
   methods: {
     // 获取新闻额外信息
     fetchStoryExtra: function() {
-      axios.get('/story-extra/' + this.$store.state.id)
+      axios.get('api/story-extra/' + this.$store.state.id)
       .then(response => {
         this.$store.state.long_comments = response.data.long_comments;
         this.$store.state.popularity = response.data.popularity;

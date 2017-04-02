@@ -32,7 +32,7 @@ export default {
   methods: {
     // 或许指定id主题下的编辑信息
     fetchData() {
-      axios.get('/theme/' + this.$route.params.id)
+      axios.get('api/theme/' + this.$route.params.id)
         .then(response => {
           this.data = response.data.editors;
         });

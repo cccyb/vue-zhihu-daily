@@ -41,7 +41,7 @@ export default {
   methods: {
     // 或许指定id主题下的数据
     fetchData() {
-      axios.get('/theme/' + this.id)
+      axios.get('api/theme/' + this.id)
         .then(response => {
           this.data = response.data;
           this.data.editors.map((item) => {

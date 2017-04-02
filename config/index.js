@@ -28,60 +28,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/news/latest': {
-        target: 'http://news-at.zhihu.com/api/4',
+      '/api': {
+        target: 'http://news-at.zhihu.com',
         changeOrigin: true,
         pathRewrite: {
-          '^/news/latest': '/news/latest'
-        }
-      },
-      '/news': {
-        target: 'http://news-at.zhihu.com/api/4',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/news': '/news'
-        }
-      },
-      '/story-extra': {
-        target: 'http://news-at.zhihu.com/api/4',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/story-extra': '/story-extra'
-        }
-      },
-      '/news/before': {
-        target: 'http://news-at.zhihu.com/api/4',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/news/before': '/news/before'
-        }
-      },
-      '/story': {
-        target: 'http://news-at.zhihu.com/api/4',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/story': '/story'
-        }
-      },
-      '/themes': {
-        target: 'http://news-at.zhihu.com/api/4',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/themes': '/themes'
-        }
-      },
-      '/theme': {
-        target: 'http://news-at.zhihu.com/api/4',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/theme': '/theme'
-        }
-      },
-      '/editor': {
-        target: 'http://news-at.zhihu.com/api/4',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/editor': '/editor'
+          '^/api': '/api/4'
         }
       }
     },

@@ -1,5 +1,5 @@
 <template>
-  <div class="index">
+  <div class="index" v-scroll="onScroll">
     <sidebar :isShowSidebar="isShowSidebar" v-on:hideSidebar="toggleSidebar"></sidebar>
     <mt-loadmore :top-method="loadTop" :topDistance="40" ref="loadmore">
       <header>
@@ -39,6 +39,9 @@ export default {
     loadTop() {
       this.$refs.newsList.$emit('refresh');
       this.$refs.loadmore.onTopLoaded();
+    },
+    onScroll(e, position) {
+      console.log(position);
     }
   }
 };

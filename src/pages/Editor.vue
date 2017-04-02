@@ -25,7 +25,7 @@ export default {
   methods: {
     // 或许指定id主题下的编辑信息
     fetchData() {
-      axios.get('/editor/' + this.$route.params.editorId + '/profile-page/ios')
+      axios.get('api/editor/' + this.$route.params.editorId + '/profile-page/ios')
         .then(response => {
           response.data = this.attachBodyContent(response.data);
           this.data = response.data;
