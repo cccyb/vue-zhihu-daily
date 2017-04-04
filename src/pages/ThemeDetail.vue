@@ -1,21 +1,21 @@
 <template>
   <div class="theme-detail">
     <header>
-      <img :src="attachImageUrl(data.image)" alt="">
+      <img v-lazy="attachImageUrl(data.image)" alt="">
       <i class="icon iconfont icon-back" @click="backIndex"></i>
       <span class="title">{{data.name}}</span>
       <i class="icon iconfont" :class="[isFocus ? 'icon-jian' : 'icon-jia']" @click="toggleThemeFocus"></i>
     </header>
     <div class="editors" @click="showEditors()">
       <span class="text">主编</span>
-      <img v-for="item in data.editors" :src="attachImageUrl(item.avatar)" alt="">
+      <img v-for="item in data.editors" v-lazy="attachImageUrl(item.avatar)" alt="">
       <i class="icon iconfont icon-more"></i>
     </div>
-    <ul class="list">
+    <ul class="list" ref="list">
 			<li class="list-item" v-for="story in data.stories" :key="story.id" @click="viewDetail(story.id)">
 				<span class="item-title">{{story.title}}</span>
 				<div class="image-wrapper" v-if="story.images !== undefined">
-					<img class="item-image" :src="attachImageUrl(story.images[0])" :alt="story.title">
+					<img class="item-image" v-lazy.list="attachImageUrl(story.images[0])" :alt="story.title">
 				</div>
 			</li>
 		</ul>

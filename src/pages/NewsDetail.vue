@@ -1,7 +1,7 @@
 <template>
   <div class="news-detail">
     <div class="top-wrapper" v-if="this.$store.state.newsType === 0">
-      <img :src="attachImageUrl(this.data.image)" :alt="this.data.title">
+      <img v-lazy="attachImageUrl(this.data.image)" :alt="this.data.title">
       <span class="top-title">{{data.title}}</span>
       <span class="image-source">图片：{{this.data.image_source}}</span>
     </div>

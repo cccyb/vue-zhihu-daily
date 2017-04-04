@@ -1,6 +1,6 @@
 <template>
 	<div class="news-list">
-		<ul class="list" 
+		<ul class="list" ref="newsList"
 			v-infinite-scroll="loadMore"
 			infinite-scroll-disabled="loading"
 			infinite-scroll-immediate-check=false
@@ -8,7 +8,7 @@
 			<li class="list-item" v-for="story in this.$store.state.stories" :key="story.id" @click="viewDetail(story.id)">
 				<span class="item-title">{{story.title}}</span>
 				<div class="image-wrapper">
-					<img class="item-image" :src="attachImageUrl(story.images[0])" :alt="story.title">
+					<img class="item-image" v-lazy.newsList="attachImageUrl(story.images[0])" :alt="story.title">
 					<i class="icon iconfont icon-duotu multipic" v-if="story.multipic">多图</i>
 				</div>
 			</li>

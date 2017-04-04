@@ -2,10 +2,10 @@
 <div class="long-comment">
   <div class="box"></div>
   <div class="long-comment-number" v-show="this.comments.length !== 0">{{this.$store.state.long_comments}}条长评</div>
-  <ul class="comment-list">
+  <ul class="comment-list" ref="longCommentList">
     <i class="icon iconfont icon-shafa"></i>
     <li class="comment-item" v-for="comment in this.comments">
-      <img :src="attachImageUrl(comment.avatar)" :alt="comment.author" class="avatar">
+      <img v-lazy.longCommentList="attachImageUrl(comment.avatar)" :alt="comment.author" class="avatar">
       <div class="comment-content">
         <span class="author">{{comment.author}}</span>
         <i class="icon iconfont icon-dianzan">{{comment.likes}}</i>

@@ -2,7 +2,7 @@
   <div class="swipe">
     <mt-swipe :auto="4000">
       <mt-swipe-item v-for="topStory in topStories" :key="topStory.id" @click.native="viewDetail(topStory.id)" >
-        <img :src="attachImageUrl(topStory.image)" :alt="topStory.title">
+        <img v-lazy="attachImageUrl(topStory.image)" :alt="topStory.title">
         <span class="top-story-title">{{topStory.title}}</span>
       </mt-swipe-item>
     </mt-swipe>

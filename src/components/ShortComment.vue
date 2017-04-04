@@ -4,9 +4,9 @@
     {{this.$store.state.short_comments}}条短评
     <i class="icon iconfont" :class="[isShow ? 'icon-updouble' : 'icon-downdouble']"></i>
   </div>
-  <ul class="comment-list" :class="{hide: !isShow}">
+  <ul class="comment-list" :class="{hide: !isShow}" ref="shortCommentList">
     <li class="comment-item" v-for="comment in this.comments">
-      <img :src="attachImageUrl(comment.avatar)" :alt="comment.author" class="avatar">
+      <img v-lazy.shortCommentList="attachImageUrl(comment.avatar)" :alt="comment.author" class="avatar">
       <div class="comment-content">
         <span class="author">{{comment.author}}</span>
         <i class="icon iconfont icon-dianzan">{{comment.likes}}</i>

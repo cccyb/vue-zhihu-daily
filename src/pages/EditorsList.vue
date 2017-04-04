@@ -4,10 +4,10 @@
     <i class="icon iconfont icon-back" @click="back"></i>
     <span class="text">主编</span>
   </header>
-  <ul class="list">
+  <ul class="list" ref="editorList">
     <li class="item" v-for="item in data" @click="viewEditorProfile(item.id, item.name)">
       <div class="wrap">
-        <img :src="attachImageUrl(item.avatar)" alt="">
+        <img v-lazy.editorList="attachImageUrl(item.avatar)" alt="">
         <span class="name">{{item.name}}</span>
         <span class="bio">{{item.bio}}</span>
         <i class="icon iconfont icon-more"></i>

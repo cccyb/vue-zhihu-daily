@@ -3,11 +3,11 @@
     <mt-header fixed title="收藏">
       <mt-button icon="back" slot="left" @click="back"></mt-button>
     </mt-header>
-    <ul class="list">
+    <ul class="list" ref="collectList">
       <li class="list-item" v-for="story in this.$store.state.collectStories" :key="story.id" @click="viewDetail(story.id)">
 				<span class="item-title">{{story.title}}</span>
 				<div class="image-wrapper">
-					<img class="item-image" :src="attachImageUrl(story.images[0])" :alt="story.title">
+					<img class="item-image" v-lazy.collectList="attachImageUrl(story.images[0])" :alt="story.title">
 					<i class="icon iconfont icon-duotu multipic" v-if="story.multipic">多图</i>
 				</div>
 			</li>
