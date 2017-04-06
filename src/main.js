@@ -5,7 +5,7 @@ import App from './App';
 import router from './router';
 import store from './store';
 import MintUI from 'mint-ui';
-import VueScroll from 'vue-scroll';
+// import VueScroll from 'vue-scroll';
 import 'mint-ui/lib/style.css';
 import VueLazyload from 'vue-lazyload';
 
@@ -15,7 +15,7 @@ Vue.config.productionTip = false;
 Vue.use(MintUI);
 
 // 使用 vue-scroll
-Vue.use(VueScroll);
+// Vue.use(VueScroll);
 
 // 使用vue-lazyload
 Vue.use(VueLazyload, {

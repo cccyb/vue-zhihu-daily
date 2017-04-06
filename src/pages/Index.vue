@@ -1,5 +1,6 @@
 <template>
-  <div class="index" v-scroll="onScroll">
+  <div class="index">
+    <welcome></welcome>
     <sidebar :isShowSidebar="isShowSidebar" v-on:hideSidebar="toggleSidebar"></sidebar>
     <mt-loadmore :top-method="loadTop" :topDistance="40" ref="loadmore">
       <header>
@@ -11,7 +12,9 @@
     </mt-loadmore>
   </div>
 </template>
+
 <script>
+import Welcome from '../components/welcome';
 import Swipe from '../components/Swipe';
 import NewsList from '../components/NewsList';
 import Sidebar from '../components/Sidebar';
@@ -26,6 +29,7 @@ export default {
     this.isShowSidebar = false;
   },
   components: {
+    'welcome': Welcome,
     'swipe': Swipe,
     'newsList': NewsList,
     'sidebar': Sidebar
@@ -39,13 +43,11 @@ export default {
     loadTop() {
       this.$refs.newsList.$emit('refresh');
       this.$refs.loadmore.onTopLoaded();
-    },
-    onScroll(e, position) {
-      console.log(position);
     }
   }
 };
 </script>
+
 <style lang="sass" scoped>
 @import "../assets/sass/pages/Index.sass";
 </style>
