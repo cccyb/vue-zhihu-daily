@@ -57,7 +57,7 @@ export default {
     },
     // 返回首页
     backIndex() {
-      router.go(-1);
+      router.push({ name: 'index' });
     },
     // 修改图片链接
     attachImageUrl: function(srcUrl) {

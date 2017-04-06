@@ -66,7 +66,8 @@ export default {
       if (type === 0) {
         router.push({ name: 'index' });
       } else if (type === 1) {
-        router.push({ name: 'themeDetail' });
+        let currentThemeId = this.$store.state.currentThemeId;
+        router.push({ name: 'themeDetail', params: { id: currentThemeId } });
       } else if (type === 2) {
         router.push({ name: 'collect' });
       }

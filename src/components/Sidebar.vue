@@ -89,10 +89,11 @@ export default {
       if (id === -1) { // 首页
         this.hideSidebar();
       } else { // 不是首页
+        this.$store.commit('changeCurrentThemeId', id);
         router.push({ name: 'themeDetail', params: { id: id } });
       }
     },
-    // 跳转收藏也
+    // 跳转收藏页
     goCollect() {
       router.push({ name: 'collect' });
     }

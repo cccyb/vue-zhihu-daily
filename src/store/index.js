@@ -19,6 +19,7 @@ export default new Vuex.Store({
     long_comments: 0, // 长评论总数
     short_comments: 0, // 短评论总数
     popularity: 0, // 点赞总数
+    currentThemeId: -1, // 当前主题id
     newsType: -1 // 新闻内容类型 0 普通新闻， 1 主题新闻, 2 收藏新闻
   },
   getters: {
@@ -78,6 +79,10 @@ export default new Vuex.Store({
     // 修改新闻类型
     changeNewsType(state, type) {
       state.newsType = type;
+    },
+    // 改变当前主题id
+    changeCurrentThemeId(state, id) {
+      state.currentThemeId = id;
     }
   }
 });
