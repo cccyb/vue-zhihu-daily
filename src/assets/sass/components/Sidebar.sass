@@ -5,11 +5,13 @@
     display: block;
   .sidebar
     position: fixed;
-    width: 225px;
+    width: 60%;
     height: 100%;
     background: #232a30;
     z-index: 12;
     color: #94999d;
+    display: flex;
+    flex-direction: column;
     .top
       height: 60px;
       line-height: 60px;
@@ -20,7 +22,7 @@
         line-height: 36px;
         margin-right: 12px;
     .menubar 
-      height: 50px;
+      height: 60px;
       display: flex;
       div
         width: 33.3%;
@@ -31,25 +33,25 @@
         span
           transform: scale(.75);
           display: inline-block;
+    .menu-wrapper::-webkit-scrollbar
+      display: none;
     .menu-wrapper
-      padding: 0 20px 50px 20px;
-      height: 100%;
+      padding: 0 20px;
+      flex: auto;
+      overflow: auto;
       ul
         padding: 0;
       .menu-item
-        height: 40px;
-        line-height: 40px;
+        height: 50px;
+        line-height: 50px;
         font-size: 14px;
         .icon-shouyeshouye
           font-size: 20px;
         .icon-more
           float: right;
     .foot-menu
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 30px;
-      line-height: 30px;
+      flex: 0 0 40px;
+      line-height: 40px;
       text-align: center;
       display: flex;
       .icon
