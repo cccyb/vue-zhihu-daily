@@ -22,10 +22,15 @@
       };
     },
     created() {
-      // 3.5秒后隐藏欢迎界面
-      setTimeout(() => {
+      let isFirstLoad = this.$store.state.isFirstLoad;
+      if (isFirstLoad) {
+        // 3.5秒后隐藏欢迎界面
+        setTimeout(() => {
+          this.isHide = true;
+        }, 3500);
+      } else {
         this.isHide = true;
-      }, 3500);
+      }
     },
     methods: {
     }
