@@ -39,7 +39,7 @@ export default {
     this.fetchData();
   },
   methods: {
-    // 或许指定id主题下的数据
+    // 获取指定id主题下的数据
     fetchData() {
       axios.get('api/theme/' + this.id)
         .then(response => {
