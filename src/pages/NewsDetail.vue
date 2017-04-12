@@ -35,8 +35,8 @@ export default {
         console.log(error);
       });
 
-      this.$store.commit('changeCurrentNewsId', id);
-      this.$store.commit('judgeCollectState');
+      this.$store.dispatch('changeCurrentNewsId', id);
+      this.$store.dispatch('judgeCollectState');
     },
     // 修改图片链接
     attachImageUrl: function(srcUrl) {

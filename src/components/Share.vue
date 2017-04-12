@@ -58,7 +58,7 @@ export default {
     };
   },
   created() {
-    this.$store.commit('judgeCollectState');
+    this.$store.dispatch('judgeCollectState');
   },
   methods: {
     // 隐藏分享菜单事件
@@ -67,7 +67,7 @@ export default {
     },
     // 收藏文章
     toggleCollect: function() {
-      this.$store.commit('toggleCollect');
+      this.$store.dispatch('toggleCollect');
     }
   }
 };

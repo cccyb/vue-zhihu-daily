@@ -89,7 +89,7 @@ export default {
       if (id === -1) { // 首页
         this.hideSidebar();
       } else { // 不是首页
-        this.$store.commit('changeCurrentThemeId', id);
+        this.$store.dispatch('changeCurrentThemeId', id);
         router.push({ name: 'themeDetail', params: { id: id } });
       }
     },
