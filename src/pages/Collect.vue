@@ -37,8 +37,8 @@
       },
       // 查询新闻详情
       viewDetail(id) {
-        this.$store.commit('changeCurrentNewsId', id);
-        this.$store.commit('changeNewsType', 2);
+        this.$store.dispatch('changeCurrentNewsId', id);
+        this.$store.dispatch('changeNewsType', 2);
         router.push({ name: 'newsDetail', params: { id: id } });
       }
     }

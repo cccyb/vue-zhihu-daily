@@ -32,7 +32,7 @@
 			// 判断是否是第一次进入首页
 			if (this.$store.state.isFirstLoad) {
 				this.fetchData();
-				this.$store.commit('changeLoadState');
+				this.$store.dispatch('changeLoadState');
 			}
 			this.initDate();
 
@@ -44,8 +44,8 @@
 		methods: {
 			// 跳转到对应id的文章详情页
       viewDetail: function(id) {
-				this.$store.commit('changeCurrentNewsId', id);
-				this.$store.commit('changeNewsType', 0);
+				this.$store.dispatch('changeCurrentNewsId', id);
+				this.$store.dispatch('changeNewsType', 0);
         router.push({ name: 'newsDetail', params: { id: id } });
       },
 			// 修改图片链接
@@ -62,7 +62,7 @@
 					let stories = response.data.stories;
 					let ids = stories.map(story => story.id);
 
-					this.$store.commit('addNews', {
+					this.$store.dispatch('addNews', {
 						stories: stories,
 						ids: ids
 					});
@@ -74,7 +74,7 @@
 			// 刷新数据
 			refreshData() {
 				// 刷新数据
-				this.$store.commit('refreshNews');
+				this.$store.dispatch('refreshNews');
 
 				this.$nextTick(() => {
 					this.fetchData();
@@ -108,7 +108,7 @@
 					let stories = response.data.stories;
 					let ids = stories.map(story => story.id);
 
-					this.$store.commit('addNews', {
+					this.$store.dispatch('addNews', {
 						stories: stories,
 						ids: ids
 					});

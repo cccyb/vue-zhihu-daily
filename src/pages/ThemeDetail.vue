@@ -51,8 +51,8 @@ export default {
     },
     // 跳转到对应id的文章详情页
     viewDetail: function(id) {
-      this.$store.commit('changeCurrentNewsId', id);
-      this.$store.commit('changeNewsType', 1);
+      this.$store.dispatch('changeCurrentNewsId', id);
+      this.$store.dispatch('changeNewsType', 1);
       router.push({ name: 'newsDetail', params: { id: id } });
     },
     // 返回首页
