@@ -119,6 +119,11 @@ npm run build
 |	|	|-- index.js			// 路由配置
 |	|-- store
 |	|	|-- index.js			// vuex配置
+|	|	|-- actions.js		// actions
+|	|	|-- getters.js		// getters
+|	|	|-- mutation-types.js	// mutation常量
+|	|	|-- mutations.js		// mutation
+|	|	|-- state.js			// state
 |	|-- App.vue				// 页面入口文件
 |	|-- main.js				// 程序入口文件，加载各种公共组件
 |-- static					// 静态文件目录
@@ -158,7 +163,7 @@ npm run build
 - [x] ~~图片懒加载~~
 - [ ] 页面切换动画
 - [ ] 手势侧滑功能
-- [ ] vuex状态管理文件重构优化
+- [x] ~~vuex状态管理文件重构优化~~
 - [ ] 浏览器兼容性
 - [x] ~~生产环境部署~~
 - [ ] 流程跳转优化
