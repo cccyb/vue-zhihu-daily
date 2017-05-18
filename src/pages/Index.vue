@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import Welcome from '../components/welcome';
-import Swipe from '../components/Swipe';
+import Welcome from '../components/Welcome';
+import Swipe from '../components/swipe';
 import NewsList from '../components/NewsList';
 import Sidebar from '../components/Sidebar';
 
