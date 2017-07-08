@@ -1,4 +1,5 @@
 <template>
+  <transition name>
   <div class="welcome" :class="{ hide: isHide }">
     <div class="img-wrap">
       <img src="../assets/images/welcome.jpg" alt="" width="100%" height="100%">
@@ -12,16 +13,21 @@
       </div>
     </div>
   </div>
+  </transition>
 </template>
 
 <script>
+  // import axios from 'axios';
   export default {
     data() {
       return {
+        // imgSrc: '../assets/images/welcome.jpg',
         isHide: false
       };
     },
     created() {
+      // this.fetchImgSrc();
+
       let isFirstLoad = this.$store.state.isFirstLoad;
       if (isFirstLoad) {
         // 3.5秒后隐藏欢迎界面
@@ -33,6 +39,30 @@
       }
     },
     methods: {
+      // fetchImgSrc() {
+      //   axios.get('api7/prefetch-launch-images/1080*1920')
+      //     .then(response => {
+      //       console.log(response);
+  
+      //       let remoteImgSrc = response.data.creatives[0].url;
+
+      //       if (remoteImgSrc === null || remoteImgSrc === '' || remoteImgSrc === undefined) {
+      //         this.imgSrc = '../assets/images/welcome.jpg';
+      //       } else {
+      //         this.imgSrc = this.attachImageUrl(remoteImgSrc);
+      //       }
+      //     })
+      //     .catch(error => {
+      //       console.log(error);
+      //       this.imgSrc = '../assets/images/welcome.jpg';
+      //     });
+      // },
+      // 修改图片链接
+      // attachImageUrl: function(srcUrl) {
+      //   if (srcUrl !== undefined) {
+      //     return srcUrl.replace(/http\w{0,1}:\/\/p/g, 'https://images.weserv.nl/?url=p');
+      //   }
+      // }
     }
   };
 </script>
