@@ -1,6 +1,6 @@
 {
   "name": "vue-zhihu-daily",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "description": "A zhihu-daily webApp built with Vue.js",
   "author": "cccyb <chenyubo1996@gmail.com>",
   "private": true,
