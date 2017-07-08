@@ -18,6 +18,7 @@ import Welcome from '../components/Welcome';
 import Swipe from '../components/Swipe';
 import NewsList from '../components/NewsList';
 import Sidebar from '../components/Sidebar';
+import 'scrolling-element'; // profill 'document.scrollingElement'
 
 export default {
   data() {
@@ -37,6 +38,18 @@ export default {
   methods: {
     // 切换侧边栏显示状态
     toggleSidebar() {
+      // 侧边栏显示时设置底部列表不能滑动
+      let scrollTop;
+      
+      if (!this.isShowSidebar) { // 禁止滑动
+        scrollTop = document.scrollingElement.scrollTop;
+        document.body.style.position = 'fixed';
+        document.body.style.top = -scrollTop + 'px';
+      } else { // 取消滑动限制
+        document.body.style.position = '';
+        document.scrollingElement.scrollTop = scrollTop;
+      }
+
       this.isShowSidebar = !this.isShowSidebar;
     },
     // 下拉刷新数据
