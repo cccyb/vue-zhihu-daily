@@ -1,5 +1,5 @@
 # vue-zhihu-daily
-[![Build Status](https://travis-ci.org/cccyb/vue-zhihu-daily.svg?branch=master)](https://travis-ci.org/cccyb/vue-zhihu-daily)
+[![Build Status](https://travis-ci.org/cccyb/vue-zhihu-daily.svg?branch=master)](https://travis-ci.org/cccyb/vue-zhihu-daily) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](http://opensource.org/licenses/MIT)
 > 这是一个基于Vue全家桶开发的知乎日报WebApp，页面样式主要参考iOS版知乎日报APP。
 
 > 个人博客：[陈钰博的博客](http://www.chenyubo.me)
