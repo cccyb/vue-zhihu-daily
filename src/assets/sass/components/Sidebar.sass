@@ -1,6 +1,9 @@
 .wrap
-  // display: none;
   z-index: 10;
+  &.move-enter-active, &.move-leave-active
+    transition: opacity .6s;
+  &.move-enter, &.move-leave-to
+    opacity: 0;
   &.show
     display: block;
   .sidebar

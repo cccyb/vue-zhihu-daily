@@ -1,40 +1,42 @@
 <template>
-  <div class="wrap">
-    <div class="sidebar">
-      <div class="top">
-        <img src="../assets/images/avatar.png" alt="" class="avatar">
-        <span class="name">陈钰博</span>
-      </div>
-      <div class="menubar">
-        <div @click="goCollect">
-          <i class="icon iconfont icon-shoucang"></i><br>
-          <span>收藏</span>
+  <transition name="move">
+    <div class="wrap">
+      <div class="sidebar">
+        <div class="top">
+          <img src="../assets/images/avatar.png" alt="" class="avatar">
+          <span class="name">陈钰博</span>
         </div>
-        <div>
-          <i class="icon iconfont icon-xiaoxi"></i><br>
-          <span>消息</span>
+        <div class="menubar">
+          <div @click="goCollect">
+            <i class="icon iconfont icon-shoucang"></i><br>
+            <span>收藏</span>
+          </div>
+          <div>
+            <i class="icon iconfont icon-xiaoxi"></i><br>
+            <span>消息</span>
+          </div>
+          <div>
+            <i class="icon iconfont icon-shezhi"></i><br>
+            <span>设置</span>
+          </div>
         </div>
-        <div>
-          <i class="icon iconfont icon-shezhi"></i><br>
-          <span>设置</span>
+        <div class="menu-wrapper" ref="menuWrapper">
+          <ul>
+            <li class="menu-item" v-for="item in data" :key="item.id" @click="themeDetail(item.id)">
+              <i class="icon iconfont icon-shouyeshouye" v-if="item.id === -1"></i>
+              {{item.name}}
+              <i class="icon iconfont icon-more"></i>
+            </li>
+          </ul>
+        </div>
+        <div class="foot-menu">
+          <i class="icon iconfont icon-lixianwenjian">&nbsp;&nbsp;离线</i>
+          <i class="icon iconfont icon-yejianmoshi">&nbsp;&nbsp;夜间</i>
         </div>
       </div>
-      <div class="menu-wrapper" ref="menuWrapper">
-        <ul>
-          <li class="menu-item" v-for="item in data" :key="item.id" @click="themeDetail(item.id)">
-            <i class="icon iconfont icon-shouyeshouye" v-if="item.id === -1"></i>
-            {{item.name}}
-            <i class="icon iconfont icon-more"></i>
-          </li>
-        </ul>
-      </div>
-      <div class="foot-menu">
-        <i class="icon iconfont icon-lixianwenjian">&nbsp;&nbsp;离线</i>
-        <i class="icon iconfont icon-yejianmoshi">&nbsp;&nbsp;夜间</i>
-      </div>
+      <div class="mask" @click="hideSidebar"></div>
     </div>
-    <div class="mask" @click="hideSidebar"></div>
-  </div>
+  </transition>
 </template>
 <script>
 import axios from 'axios';
@@ -69,15 +71,11 @@ export default {
           name: '首页'
         });
 
-        if (!this.menuScroll) {
-          this.$nextTick(() => {
-            this.menuScroll = new BScroll(this.$refs.menuWrapper, {
-              click: true
-            });
+        this.$nextTick(() => {
+          this.menuScroll = new BScroll(this.$refs.menuWrapper, {
+            click: true
           });
-        } else {
-          this.menuScroll.refresh();
-        }
+        });
       })
       .catch(error => {
         console.log(error);
