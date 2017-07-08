@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <welcome></welcome>
-    <sidebar :isShowSidebar="isShowSidebar" v-on:hideSidebar="toggleSidebar"></sidebar>
+    <sidebar v-if="isShowSidebar" v-on:hideSidebar="toggleSidebar"></sidebar>
     <mt-loadmore :top-method="loadTop" :topDistance="40" ref="loadmore">
       <header>
         <i class="icon iconfont icon-fenlei" @click="toggleSidebar"></i>

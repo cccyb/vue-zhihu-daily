@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap" :class="[isShowSidebar ? 'show' : '']">
+  <div class="wrap">
     <div class="sidebar">
       <div class="top">
         <img src="../assets/images/avatar.png" alt="" class="avatar">
@@ -21,7 +21,7 @@
       </div>
       <div class="menu-wrapper" ref="menuWrapper">
         <ul>
-          <li class="menu-item" v-for="item in data" @click="themeDetail(item.id)">
+          <li class="menu-item" v-for="item in data" :key="item.id" @click="themeDetail(item.id)">
             <i class="icon iconfont icon-shouyeshouye" v-if="item.id === -1"></i>
             {{item.name}}
             <i class="icon iconfont icon-more"></i>
@@ -42,11 +42,6 @@ import BScroll from 'better-scroll';
 import router from '../router';
 
 export default {
-  props: {
-    isShowSidebar: {
-      type: Boolean
-    }
-  },
   data() {
     return {
       data: []
@@ -74,11 +69,15 @@ export default {
           name: '首页'
         });
 
-        this.$nextTick(() => {
-          this.menuScroll = new BScroll(this.$refs.menuWrapper, {
-            click: true
+        if (!this.menuScroll) {
+          this.$nextTick(() => {
+            this.menuScroll = new BScroll(this.$refs.menuWrapper, {
+              click: true
+            });
           });
-        });
+        } else {
+          this.menuScroll.refresh();
+        }
       })
       .catch(error => {
         console.log(error);
