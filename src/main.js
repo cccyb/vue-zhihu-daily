@@ -20,7 +20,7 @@ Vue.use(MintUI);
 // 使用vue-lazyload
 Vue.use(VueLazyload, {
   preLoad: 1.3,
-  error: 'dist/error.png',
+  // error: 'dist/error.png',
   loading: 'dist/loading.gif',
   attempt: 1,
   listenEvents: [ 'scroll' ]
