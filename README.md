@@ -196,7 +196,7 @@ proxyTable: {
 ### 2.项目部署以及解决跨域问题（生产环境）
 想要在生产环境里解决跨域问题，可以选择使用后台服务器中转API来完成跨域，具体可以选择Node或者Nginx来解决。
 
-本项目已部署至阿里云服务器，使用Nginx进行代理，详情见[阿里云服务器部署Vue项目总结](http://chenyubo.me/2017/04/02/deploy-vue-project-to-aliyun/)
+本项目已部署至阿里云服务器，使用Nginx进行代理，详情见[阿里云服务器部署Vue项目总结](http://www.chenyubo.me/2017/04/02/deploy-vue-project/)
 
 ### 3.图片防盗链问题
 知乎API返回的数据中的图片都是存储在知乎服务器上的url地址，直接请求会返回403，所以需要进行一些处理，这里我采用了[yatessss](https://github.com/yatessss)同学在[使用vue完成知乎日报web版](http://www.yatessss.com/2016/07/08/%E4%BD%BF%E7%94%A8vue%E5%AE%8C%E6%88%90%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5web%E7%89%88.html)的解决方案，使用[Images.weserv.nl](https://images.weserv.nl)进行缓存图片，并在需要使用图片url的地方进行相应的替换。
